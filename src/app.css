@@ -1,0 +1,23 @@
+@import url(chota.css);
+
+:root {
+  --bg-color: #fefefe;
+  --bg-secondary-color: #f3f3f6;
+  --color-darkGrey: #161616;
+}
+#buttons {
+  margin-top: 5vh;
+}
+.button {
+  border: 2px solid transparent;
+  -webkit-transition: none;
+  transition: none;
+}
+body.dark {
+  --bg-color: #161616;
+  --bg-secondary-color: #131316;
+  --color-darkGrey: #fefefe;
+}
+#content {
+  margin-top: 10vh;
+}

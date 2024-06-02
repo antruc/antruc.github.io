@@ -26,9 +26,9 @@
      showgrid="false"
      showborder="false"
      borderlayer="true"
-     inkscape:zoom="0.5"
-     inkscape:cx="202"
-     inkscape:cy="171"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="159.80613"
+     inkscape:cy="174.65537"
      inkscape:window-width="1366"
      inkscape:window-height="697"
      inkscape:window-x="0"
@@ -41,9 +41,23 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <path
+       style="fill:#fefefe;fill-opacity:1;stroke:#fefefe;stroke-width:1.93543;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="path342"
+       sodipodi:type="arc"
+       sodipodi:cx="47.625"
+       sodipodi:cy="47.625"
+       sodipodi:rx="43.612896"
+       sodipodi:ry="43.612896"
+       sodipodi:start="0"
+       sodipodi:end="6.2831375"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="M 91.237896,47.625 A 43.612896,43.612896 0 0 1 47.625521,91.237896 43.612896,43.612896 0 0 1 4.012104,47.626043 43.612896,43.612896 0 0 1 47.623436,4.0121041 43.612896,43.612896 0 0 1 91.237896,47.622915" />
     <g
        id="g10044"
-       transform="matrix(0.77023001,0,0,0.77023001,-1.0355055,-1.7282377)">
+       transform="matrix(0.77023,0,0,0.77023,-1.0355055,-1.7282377)"
+       sodipodi:insensitive="true">
       <path
          style="fill:#fefefe;fill-opacity:1;stroke:#161616;stroke-width:2.79352;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path111"

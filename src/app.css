@@ -4,6 +4,8 @@
   --bg-color: #fefefe;
   --bg-secondary-color: #f3f3f6;
   --color-darkGrey: #161616;
+  --font-color: #161616;
+  --font-size: 1.9rem;
 }
 #buttons {
   margin-top: 5vh;
@@ -17,6 +19,7 @@ body.dark {
   --bg-color: #161616;
   --bg-secondary-color: #131316;
   --color-darkGrey: #fefefe;
+  --font-color: #fefefe;
 }
 #content {
   margin-top: 10vh;

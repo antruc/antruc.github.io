@@ -2,24 +2,29 @@
 
 :root {
   --bg-color: #fefefe;
-  --bg-secondary-color: #f3f3f6;
-  --color-darkGrey: #161616;
-  --font-color: #161616;
-  --font-size: 1.9rem;
+  --bg-secondary-color: #161616;
+  --font-color: #fefefe;
+  --font-size: 2rem;
 }
 #buttons {
   margin-top: 5vh;
 }
 .button {
-  border: 2px solid transparent;
+  background: var(--bg-secondary-color);
+  color: var(--font-color);
   -webkit-transition: none;
   transition: none;
+  margin: 10px;
+  font-weight: bold;
+  transform: none;
+}
+.button:hover {
+  opacity: 1;
 }
 body.dark {
   --bg-color: #161616;
-  --bg-secondary-color: #131316;
-  --color-darkGrey: #fefefe;
-  --font-color: #fefefe;
+  --bg-secondary-color: #fefefe;
+  --font-color: #161616;
 }
 #content {
   margin-top: 10vh;

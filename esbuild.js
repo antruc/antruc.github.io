@@ -15,7 +15,12 @@ async function copyAndWrite(outdir, outfile) {
   head.insertAdjacentHTML(
     'beforeend',
     `  <link rel="stylesheet" href="app${outfile}.css" //>
-    <script src="app${outfile}.js"></script>
+`
+  )
+  const body = root.querySelector('body')
+  body.insertAdjacentHTML(
+    'beforeend',
+    `  <script src="app${outfile}.js"></script>
 `
   )
 

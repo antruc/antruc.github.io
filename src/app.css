@@ -10,6 +10,7 @@
   margin-top: 5vh;
 }
 .button {
+  width: 115px;
   background: var(--bg-secondary-color);
   color: var(--font-color);
   -webkit-transition: none;

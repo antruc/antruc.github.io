@@ -14,13 +14,13 @@ async function copyAndWrite(outdir, outfile) {
   const head = root.querySelector('head')
   head.insertAdjacentHTML(
     'beforeend',
-    `  <link rel="stylesheet" href="app${outfile}.css" //>
+    `  <link rel="stylesheet" href="theme${outfile}.css" //>
 `
   )
   const body = root.querySelector('body')
   body.insertAdjacentHTML(
     'beforeend',
-    `  <script src="app${outfile}.js"></script>
+    `  <script src="theme${outfile}.js"></script>
 `
   )
 
@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'development') { // eslint-disable-line
   copyAndWrite('www', '')
 
   let ctx = await esbuild.context({
-    entryPoints: ['src/app.js'],
+    entryPoints: ['src/theme.js'],
     bundle: true,
     target: ['es6'],
     define: { 'window.IS_DEVELOPMENT': 'true' },
@@ -52,12 +52,12 @@ if (process.env.NODE_ENV === 'development') { // eslint-disable-line
   copyAndWrite('dist', '.min')
 
   await esbuild.build({
-    entryPoints: ['src/app.js'],
+    entryPoints: ['src/theme.js'],
     bundle: true,
     minify: true,
     target: ['es6'],
     define: { 'window.IS_DEVELOPMENT': 'false' },
-    outfile: 'dist/app.min.js'
+    outfile: 'dist/theme.min.js'
   })
   console.log('Build finished')
 }

@@ -1,11 +1,14 @@
 import './app.css'
 import './reload.js'
 
-if (
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: dark)').matches
-) {
-  document.body.classList.add('dark')
-  document.querySelector('#logo').src = './img/logo-dark.svg'
-  document.querySelector('link[rel=icon]').href = './img/favicon-dark.png'
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+
+function updateTheme() {
+  document.body.classList.toggle('dark', prefersDark.matches)
+  document.querySelector('#logo').src = prefersDark.matches ? './img/logo-dark.svg' : './img/logo-light.svg'
+  document.querySelector('link[rel=icon]').href = prefersDark.matches ? './img/favicon-dark.png' : './img/favicon-light.png'
 }
+
+document.addEventListener('DOMContentLoaded', updateTheme)
+
+prefersDark.addEventListener('change', updateTheme)

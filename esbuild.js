@@ -6,6 +6,7 @@ import open from 'open'
 process.env.NODE_ENV = process.argv[2] // eslint-disable-line
 
 async function copyAndWrite(outdir, outfile) {
+  await fs.emptyDir(outdir)
   await fs.copy('public', outdir)
 
   const html = await fs.readFile(`${outdir}/index.html`, 'utf8')
@@ -14,13 +15,13 @@ async function copyAndWrite(outdir, outfile) {
   const head = root.querySelector('head')
   head.insertAdjacentHTML(
     'beforeend',
-    `  <link rel="stylesheet" href="theme${outfile}.css" //>
+    `  <link rel="stylesheet" href="app${outfile}.css" //>
 `
   )
   const body = root.querySelector('body')
   body.insertAdjacentHTML(
     'beforeend',
-    `  <script src="theme${outfile}.js"></script>
+    `  <script src="app${outfile}.js"></script>
 `
   )
 
@@ -32,7 +33,7 @@ if (process.env.NODE_ENV === 'development') { // eslint-disable-line
   copyAndWrite('www', '')
 
   let ctx = await esbuild.context({
-    entryPoints: ['src/theme.js'],
+    entryPoints: ['src/app.js'],
     bundle: true,
     target: ['es6'],
     define: { 'window.IS_DEVELOPMENT': 'true' },
@@ -52,12 +53,12 @@ if (process.env.NODE_ENV === 'development') { // eslint-disable-line
   copyAndWrite('dist', '.min')
 
   await esbuild.build({
-    entryPoints: ['src/theme.js'],
+    entryPoints: ['src/app.js'],
     bundle: true,
     minify: true,
     target: ['es6'],
     define: { 'window.IS_DEVELOPMENT': 'false' },
-    outfile: 'dist/theme.min.js'
+    outfile: 'dist/app.min.js'
   })
   console.log('Build finished')
 }

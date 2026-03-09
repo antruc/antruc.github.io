@@ -9,7 +9,7 @@
     "format": "npm run prettier -- --write && npm run lint -- --fix",
     "build": "node esbuild.js",
     "dev": "node esbuild.js development",
-    "test": "npm run prettier && npm run lint"
+    "test": "vitest"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -19,9 +19,11 @@
     "eslint-config-prettier": "^10.1.2",
     "fs-extra": "^11.3.0",
     "globals": "^16.0.0",
+    "jsdom": "^28.1.0",
     "node-html-parser": "^7.0.1",
     "open": "^10.1.1",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "vitest": "^4.0.18"
   },
   "license": "GPL-3.0-only"
 }

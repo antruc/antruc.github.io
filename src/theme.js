@@ -3,14 +3,14 @@ const theme = {
     // Detects if the user prefers dark mode
     const darkMode = window.matchMedia('(prefers-color-scheme: dark)')
 
+    const logo = document.querySelector('#logo')
+    const favicon = document.querySelector('link[rel=icon]')
+
     const update = () => {
       const isDark = darkMode.matches
 
       // Add or remove the dark class
       document.body.classList.toggle('dark', isDark)
-
-      const logo = document.querySelector('#logo')
-      const favicon = document.querySelector('link[rel=icon]')
 
       // Changes the logo and favicon depending on the theme
       logo?.setAttribute('src', `./img/logo-${isDark ? 'dark' : 'light'}.svg`)

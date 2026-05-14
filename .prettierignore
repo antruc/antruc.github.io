@@ -1,16 +1,5 @@
-# Ignore artifacts:
 dist
-www
 public
 
 # Ignore all HTML files:
 **/*.html
-
-# Ignore eslint file:
-eslint.config.mjs
-
-# Ignore vitest file:
-vitest.config.js
-
-# Ignore esbuild.js file:
-esbuild.js

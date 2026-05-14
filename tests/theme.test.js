@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach, vi } from 'vitest'
-import theme from '../src/theme.js'
+import theme from '../src/js/theme.js'
 
 describe('theme', () => {
   let listeners = {}

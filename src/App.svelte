@@ -20,3 +20,10 @@
     <a class="btn btn-neutral w-32" href="cv.pdf" target="_blank">CV</a>
   </div>
 </div>
+
+<style>
+  /* Scoped override wins over Tailwind's global .min-h-screen (two classes) */
+  .min-h-screen {
+    min-height: 85vh;
+  }
+</style>

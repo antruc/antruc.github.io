@@ -1,32 +1,25 @@
-@import './chota.css';
-
+@import 'tailwindcss';
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark;
+}
 :root {
-  --bg-color: #fefefe;
-  --bg-secondary-color: #161616;
-  --font-color: #fefefe;
-  --font-size: 2rem;
+  --color-base-100: #fefefe;
+  --color-base-content: #161616;
+  --color-neutral: #161616;
+  --color-neutral-content: #fefefe;
+  --fontsize: 1.25rem;
 }
-#buttons {
-  margin-top: 5vh;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-base-100: #161616;
+    --color-base-content: #fefefe;
+    --color-neutral: #fefefe;
+    --color-neutral-content: #161616;
+  }
 }
-.button {
-  width: 115px;
-  background: var(--bg-secondary-color);
-  color: var(--font-color);
-  -webkit-transition: none;
-  transition: none;
-  margin: 10px;
-  font-weight: bold;
-  transform: none;
-}
-.button:hover {
-  opacity: 1;
-}
-body.dark {
-  --bg-color: #161616;
-  --bg-secondary-color: #fefefe;
-  --font-color: #161616;
-}
-#content {
-  margin-top: 10vh;
+
+.min-h-screen {
+  min-height: 85vh;
 }

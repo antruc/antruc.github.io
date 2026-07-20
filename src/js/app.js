@@ -1,3 +1,4 @@
-import theme from './theme.js'
+import { mount } from 'svelte'
+import App from '../App.svelte'
 
-theme.init()
+mount(App, { target: document.getElementById('app') })

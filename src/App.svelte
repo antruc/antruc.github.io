@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="img/favicon-{mode}.png" />
 </svelte:head>
 
-<div class="flex min-h-screen flex-col items-center justify-center gap-[5vh]">
+<div class="page flex flex-col items-center justify-center gap-[5vh]">
   <img id="logo" src="img/logo-{mode}.svg" alt="Antruc" />
   <div class="flex gap-4">
     <a
@@ -22,8 +22,7 @@
 </div>
 
 <style>
-  /* Scoped override wins over Tailwind's global .min-h-screen (two classes) */
-  .min-h-screen {
+  .page {
     min-height: 85vh;
   }
 </style>

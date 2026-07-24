@@ -20,7 +20,10 @@ const csp = {
   }
 }
 
-export default defineConfig({
+// mode is 'test' only under vitest, so the browser condition never leaks into the build
+export default defineConfig(({ mode }) => ({
   base: '/',
-  plugins: [tailwindcss(), svelte(), csp]
-})
+  plugins: [tailwindcss(), svelte(), csp],
+  resolve: mode === 'test' ? { conditions: ['browser'] } : {},
+  test: { environment: 'jsdom' }
+}))

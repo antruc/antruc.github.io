@@ -23,6 +23,9 @@
 \usepackage{titlesec}
 \usepackage{enumitem}
 
+% Icons for links. Ships Type1 fonts, so it works under pdflatex.
+\usepackage{fontawesome5}
+
 % Sourcesanspro ships with almost every TeX distribution
 \usepackage[default]{sourcesanspro}
 \renewcommand{\familydefault}{\sfdefault}
@@ -66,8 +69,8 @@
 
 \titlespacing{\section}
 {0pt}
-{14pt}
-{8pt}
+{18pt}
+{10pt}
 
 %==================================================
 % COMMANDS
@@ -81,7 +84,7 @@
 % doubled on the first entry, it takes the max of the two.
 % The % at line ends kills the spurious spaces the macro used to emit
 \newcommand{\entry}[2]{%
-\addvspace{8pt}%
+\addvspace{16pt}%
 \makebox[\linewidth]{\textbf{#1}\hfill{\small#2}}%
 }
 
@@ -110,11 +113,11 @@ Antonio Rubio Castañeda}
 
 \vspace{12pt}
 
-\href{mailto:admin@antruc.dev}{admin@antruc.dev}%
+\href{mailto:admin@antruc.dev}{\faEnvelope\ admin@antruc.dev}%
 \hspace{1cm}%
-\href{https://antruc.dev}{antruc.dev}%
+\href{https://antruc.dev}{\faGlobe\ antruc.dev}%
 \hspace{1cm}%
-\href{https://github.com/antruc}{github.com/antruc}
+\href{https://github.com/antruc}{\faGithub\ github.com/antruc}
 
 \end{center}
 
@@ -124,10 +127,9 @@ Antonio Rubio Castañeda}
 
 \section{Perfil Profesional}
 
-Desarrollador de software autodidacta con más de ocho años de experiencia en
-desarrollo web y aplicaciones Android. Actualmente dirijo el área de informática
-de CONSAEFA, donde me dedico a automatizar los procesos internos, administrar la
-infraestructura tecnológica de la empresa y desarrollar software.
+Soy desarrollador autodidacta con más de ocho años en desarrollo web y Android.
+Actualmente dirijo el área de informática de CONSAEFA, donde automatizo procesos,
+administro la infraestructura y desarrollo software.
 
 %==================================================
 % EXPERIENCE
@@ -140,12 +142,12 @@ infraestructura tecnológica de la empresa y desarrollar software.
 \position{Responsable de Informática}
 
 \begin{itemize}
-    \item Construí un sistema de inventario con altas, bajas y consultas, primero en VBA y migrado después a aplicación de Android y de escritorio.
-    \item Desarrollé aplicaciones de registro en campo que entregan los datos ya consolidados y listos para su análisis, sin transcripción posterior.
-    \item Mejoré el análisis SIG con una librería de Python propia y, sobre ella, el proceso completo de clasificación de superficies de predios, de las curvas de nivel a la capa final.
+    \item Construí un sistema de inventario, primero en VBA, luego migrado a aplicación Android y de escritorio.
+    \item Desarrollé aplicaciones de registro en campo que entregan los datos listos para análisis.
+    \item Mejoré el análisis SIG con una librería propia de Python y automaticé la clasificación de superficies.
     \item Automaticé el cálculo y los reportes de gastos semanales, antes hechos a mano.
-    \item Mantengo la presencia digital de la empresa, que abarca la intranet en SharePoint, el sitio web corporativo y las redes sociales.
-    \item Doy soporte técnico a los equipos de cómputo y al equipo de oficina.
+    \item Administro el espacio de trabajo interno en SharePoint, el sitio web corporativo y las redes sociales.
+    \item Doy soporte técnico a los equipos de cómputo y de oficina.
 \end{itemize}
 
 \entry{Desarrollador Web Freelance}{Enero 2022 -- Junio 2024}
@@ -153,8 +155,7 @@ infraestructura tecnológica de la empresa y desarrollar software.
 \position{Desarrollo Web y Sistemas Embebidos}
 
 \begin{itemize}
-    \item Construí sitios web para negocios locales con WordPress y tecnologías web modernas, desde el diseño hasta la publicación y el mantenimiento.
-    \item Desarrollé aplicaciones web a medida con JavaScript según los requerimientos de cada cliente.
+    \item Construí sitios web para negocios locales con WordPress, del diseño al mantenimiento.
     \item Fabriqué dispositivos de propósito específico con Arduino y Raspberry Pi Pico.
     \item Produje y edité contenido gráfico y audiovisual para clientes.
 \end{itemize}
@@ -164,8 +165,8 @@ infraestructura tecnológica de la empresa y desarrollar software.
 \position{Desarrollador de Aplicaciones Android}
 
 \begin{itemize}
-    \item Desarrollé y publiqué aplicaciones Android que suman más de 4 millones de descargas y una calificación promedio de 4.5 estrellas.
-    \item Diseñé la interfaz, la identidad visual y los recursos gráficos de los productos, y gestioné sus campañas de adquisición en Google Ads.
+    \item Desarrollé y publiqué aplicaciones Android, del código a la identidad visual y los gráficos de tienda, con más de 4 millones de descargas y 4.5 estrellas en promedio.
+    \item Gestioné las campañas publicitarias en Google Ads.
 \end{itemize}
 
 \entry{Comex}{Agosto 2014 -- Abril 2016}
@@ -173,7 +174,7 @@ infraestructura tecnológica de la empresa y desarrollar software.
 \position{Encargado de Tienda}
 
 \begin{itemize}
-    \item Administré la operación diaria de la sucursal, desde la atención a clientes hasta el inventario, la caja y la facturación electrónica.
+    \item Administré la operación diaria de la sucursal: atención a clientes, inventario, caja y facturación electrónica.
 \end{itemize}
 
 %==================================================
@@ -182,37 +183,30 @@ infraestructura tecnológica de la empresa y desarrollar software.
 
 \section{Proyectos}
 
-\entry{cfasig}{\href{https://pypi.org/project/cfasig/}{pypi.org/project/cfasig}}
+\entry{cfasig}{\href{https://pypi.org/project/cfasig/}{\faPython\ pypi.org/project/cfasig}}
 
 Librería de Python sobre GeoPandas, Shapely y Rasterio que lleva el análisis SIG
-de las ventanas de diálogo de ArcGIS a scripts reproducibles, con equivalencia
-directa a las operaciones de ArcToolbox.
+de ArcGIS a scripts reproducibles.
 
-\entry{Depurador de Cámara Trampa}{\href{https://github.com/antruc/depuradordecamaratrampa}{github.com/antruc/depuradordecamaratrampa}}
+\entry{Depurador de Cámara Trampa}{\href{https://github.com/antruc/depuradordecamaratrampa}{\faGithub\ github.com/antruc/depuradordecamaratrampa}}
 
-Aplicación de escritorio que revisa lotes de imágenes de cámaras trampa y
-conserva solo aquellas donde aparece fauna, con Ultralytics YOLO sobre ONNX
-Runtime. Procesamiento en flujo para lotes grandes sin cargar todo en memoria.
-Python, Toga y Briefcase; empaquetada para Linux y Windows.
+Aplicación de escritorio que filtra lotes de imágenes de cámaras trampa y
+conserva solo las que tienen fauna, con Ultralytics YOLO sobre ONNX Runtime.
 
-\entry{Bongo Cat}{\href{https://github.com/antruc/bongo-cat}{github.com/antruc/bongo-cat}}
+\entry{Bongo Cat}{\href{https://play.google.com/store/apps/details?id=bmf.bongo.cat}{\faGooglePlay\ play.google.com/store/apps/details?id=bmf.bongo.cat}}
 
-Instrumento musical táctil para Android, publicado en 2018 y en mantenimiento
-activo desde entonces: más de un millón de descargas, 10\,000 reseñas y 4.1
-estrellas en Google Play. Dieciocho instrumentos con carga y reproducción de
-audio de baja latencia sobre Web Audio, para que el sonido responda al toque sin
-retraso perceptible. Aplicación web empaquetada con Cordova y compilada con
-esbuild; migración a Capacitor en curso.
+Aplicacion musical táctil para Android, con dieciocho
+instrumentos con audio de baja latencia sobre Web Audio. Publicado en 2018 y en mantenimiento
+activo con más de un millón de descargas en Google Play.
 
-\entry{tumba}{\href{https://www.npmjs.com/package/tumba}{npmjs.com/package/tumba}}
+\entry{tumba}{\href{https://www.npmjs.com/package/tumba}{\faJsSquare\ npmjs.com/package/tumba}}
 
-Herramienta de línea de comandos para cifrar y descifrar archivos con AES-GCM
-256 y claves derivadas mediante PBKDF2. Publicada en npm.
+Herramienta de línea de comandos para cifrar archivos con AES-GCM 256 y PBKDF2.
 
-\entry{picopass}{\href{https://github.com/antruc/picopass}{github.com/antruc/picopass}}
+\entry{picopass}{\href{https://github.com/antruc/picopass}{\faGithub\ github.com/antruc/picopass}}
 
-Dispositivo USB HID sobre Raspberry Pi Pico (RP2040) que escribe una cadena
-almacenada al conectarse. Firmware en CircuitPython.
+Dispositivo USB HID sobre Raspberry Pi Pico que puede escribir una cadena almacenada al
+conectarse.
 
 %==================================================
 % SKILLS
@@ -220,9 +214,11 @@ almacenada al conectarse. Firmware en CircuitPython.
 
 \section{Conocimientos}
 
+\vspace{10pt}
+
 % style=unboxed keeps the label inline and lets long lists wrap back to the left
 % margin instead of hanging under the label.
-\begin{description}[leftmargin=0pt, labelsep=0.5em, itemsep=4pt, topsep=0pt,
+\begin{description}[leftmargin=0pt, labelsep=0.5em, itemsep=9pt, topsep=0pt,
                     parsep=0pt, style=unboxed]
 
     \item[Lenguajes:] Python, TypeScript, JavaScript, HTML, CSS, Bash, VBA

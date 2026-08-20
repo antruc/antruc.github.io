@@ -1,274 +1,250 @@
-\documentclass[12pt, letterpaper]{article}
+\documentclass[11pt,letterpaper]{article}
 
-% Packages:
+%==================================================
+% PACKAGES
+%==================================================
+
 \usepackage[
-    top=2 cm, % seperation between body and page edge from the top
-    bottom=2 cm, % seperation between body and page edge from the bottom
-    left=2 cm, % seperation between body and page edge from the left
-    right=2 cm, % seperation between body and page edge from the right
-    % showframe % for debugging 
-]{geometry} % for adjusting page geometry
-\usepackage[explicit]{titlesec} % for customizing section titles
-\usepackage{tabularx} % for making tables with fixed width columns
-\usepackage{array} % tabularx requires this
-\usepackage[dvipsnames]{xcolor} % for coloring text
-\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
-\usepackage{enumitem} % for customizing lists
-\usepackage{fontawesome5} % for using icons
-\usepackage{amsmath} % for math
+    margin=2cm
+]{geometry}
+
+% Make the PDF readable by automated recruiting systems
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage[T1]{fontenc}
+
+\usepackage[dvipsnames]{xcolor}
 \usepackage[
-    pdftitle={CV},
-    pdfauthor={Antonio Rubio},
-    colorlinks=true,
-    urlcolor=primaryColor
-]{hyperref} % for links, metadata and bookmarks
-\usepackage[pscoord]{eso-pic} % for floating text on the page
-\usepackage{calc} % for calculating lengths
-\usepackage{bookmark} % for bookmarks
-\usepackage{changepage} % for one column entries (adjustwidth environment)
-\usepackage{paracol} % for two and three column entries
-\usepackage{ifthen} % for conditional statements
-\usepackage{needspace} % for avoiding page brake right after the section title
-\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+    pdftitle={CV - Antonio Rubio Castaneda},
+    pdfauthor={Antonio Rubio Castaneda},
+    pdflang={es-MX},
+    hidelinks
+]{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
 
-% Ensure that generate pdf is machine readable/ATS parsable:
-\ifPDFTeX
-    \input{glyphtounicode}
-    \pdfgentounicode=1
-    \usepackage[T1]{fontenc}
-    \usepackage[utf8]{inputenc}
-    \usepackage{lmodern}
-\fi
+% Sourcesanspro ships with almost every TeX distribution
+\usepackage[default]{sourcesanspro}
+\renewcommand{\familydefault}{\sfdefault}
 
-\usepackage[default, type1]{sourcesanspro} 
+% No hyphenation anywhere. The slack that hyphens used to absorb goes into the
+% right margin instead, so nothing overflows.
+\usepackage[none]{hyphenat}
+\usepackage{microtype}
 
-% Some settings:
-\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
-\pagestyle{empty} % no header or footer
-\setcounter{secnumdepth}{0} % no section numbering
-\setlength{\parindent}{0pt} % no indentation
-\setlength{\topskip}{0pt} % no top skip
-\setlength{\columnsep}{0.15cm} % set column seperation
-\titleformat{\section}{
-    % avoid page braking right after the section title
-    \needspace{4\baselineskip}
-    % make the font size of the section title large and color it with the primary color
-    \Large\color{primaryColor}
-}{
-}{
-}{
-    % print bold title, give 0.15 cm space and draw a line of 0.8 pt thickness
-    % from the end of the title to the end of the body
-    \textbf{#1}\hspace{0.15cm}\titlerule[0.8pt]\hspace{-0.1cm}
-}[] % section title formatting
+\usepackage{lastpage}
 
-\titlespacing{\section}{
-    % left space:
-    -1pt
-}{
-    % top space:
-    0.3 cm
-}{
-    % bottom space:
-    0.2 cm
-} % section title spacing
+%==================================================
+% SETTINGS
+%==================================================
 
-% \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
-\newenvironment{highlights}{
-    \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
-        partopsep=0pt,
-        itemsep=0pt,
-        leftmargin=0.4 cm + 10pt
-    ]
-}{
-    \end{itemize}
-} % new environment for highlights
+\pagestyle{plain}
 
-\newenvironment{highlightsforbulletentries}{
-    \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
-        partopsep=0pt,
-        itemsep=0pt,
-        leftmargin=10pt
-    ]
-}{
-    \end{itemize}
-} % new environment for highlights for bullet entries
+% Ragged right edge. With hyphenation off this is what keeps long words from
+% being pushed past the right margin by justification.
+\raggedright
 
-\newenvironment{onecolentry}{
-    \begin{adjustwidth}{
-        0.2 cm + 0.00001 cm
-    }{
-        0.2 cm + 0.00001 cm
-    }
-}{
-    \end{adjustwidth}
-} % new environment for one column entries
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
 
-\newenvironment{twocolentry}[2][]{
-    \onecolentry
-    \def\secondColumn{#2}
-    \setcolumnwidth{\fill, 4.5 cm}
-    \begin{paracol}{2}
-}{
-    \switchcolumn \raggedleft \secondColumn
-    \end{paracol}
-    \endonecolentry
-} % new environment for two column entries
+\setlist[itemize]{
+    leftmargin=18pt,
+    itemsep=2pt,
+    topsep=4pt
+}
 
-\newenvironment{threecolentry}[3][]{
-    \onecolentry
-    \def\thirdColumn{#3}
-    \setcolumnwidth{1 cm, \fill, 4.5 cm}
-    \begin{paracol}{3}
-    {\raggedright #2} \switchcolumn
-}{
-    \switchcolumn \raggedleft \thirdColumn
-    \end{paracol}
-    \endonecolentry
-} % new environment for three column entries
+%==================================================
+% HEADINGS
+%==================================================
 
-\newenvironment{header}{
-    \setlength{\topsep}{0pt}\par\kern\topsep\centering\color{primaryColor}\linespread{1.5}
-}{
-    \par\kern\topsep
-} % new environment for the header
+\titleformat{\section}
+{\Large\bfseries}
+{}
+{0em}
+{}
+[\titlerule]
 
-% save the original href command in a new command:
-\let\hrefWithoutArrow\href
+\titlespacing{\section}
+{0pt}
+{14pt}
+{8pt}
 
-% new command for external links:
-\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\mbox{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}}
+%==================================================
+% COMMANDS
+%==================================================
+
+% Entry header: name on the left, date or link on the right. Used for both jobs
+% and projects, they render the same.
+% \makebox is required: under \raggedright the \rightskip glue competes with
+% \hfill and the date would not reach the right margin.
+% \addvspace instead of \vspace so the section heading's own space is not
+% doubled on the first entry, it takes the max of the two.
+% The % at line ends kills the spurious spaces the macro used to emit
+\newcommand{\entry}[2]{%
+\addvspace{8pt}%
+\makebox[\linewidth]{\textbf{#1}\hfill{\small#2}}%
+}
+
+\newcommand{\position}[1]{%
+{\itshape #1}%
+}
+
+%==================================================
+% DOCUMENT
+%==================================================
 
 \begin{document}
-\begin{header}
-    \fontsize{30 pt}{30 pt}
-    \textbf{Antonio Rubio Castañeda}
 
-    \vspace{0.3 cm}
+\makeatletter
+\renewcommand{\@oddfoot}{\hfil \thepage\ de \pageref{LastPage}\hfil}
+\makeatother
 
-    \normalsize
-    \mbox{\hrefWithoutArrow{mailto:admin@antruc.dev}{{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}admin@antruc.dev}}
-    \kern 0.5 cm
-    \mbox{\hrefWithoutArrow{https://antruc.dev}{{\footnotesize\faLink}\hspace*{0.13cm}antruc.dev}}
-    \kern 0.5 cm
-    \mbox{\hrefWithoutArrow{https://github.com/antruc}{{\footnotesize\faGithub}\hspace*{0.13cm}antruc}}
-    \kern 0.5 cm
-\end{header}
+%==================================================
+% HEADER
+%==================================================
 
-\vspace{0.3 cm - 0.3 cm}
+\begin{center}
 
-\vspace{0.3 cm}
+{\fontsize{28}{30}\selectfont\bfseries
+Antonio Rubio Castañeda}
 
-\section{Experiencia}
+\vspace{12pt}
 
-\vspace{0.3 cm}
+\href{mailto:admin@antruc.dev}{admin@antruc.dev}%
+\hspace{1cm}%
+\href{https://antruc.dev}{antruc.dev}%
+\hspace{1cm}%
+\href{https://github.com/antruc}{github.com/antruc}
 
-\begin{twocolentry}{
+\end{center}
 
-        06/2024 - Presente
-    }
-    \hrefWithoutArrow{https://consaefa.com}{\textbf{\color{black}CONSAEFA S.C.}} - Encargado de informática
-    \begin{highlights}
-        \item Reparación y mantenimiento de equipo de oficina
-        \item Desarrollo de software y sistemas de uso interno
-        \item Automatización de procesos mediante AI
-        \item Administración de sitio web, SharePoint y redes sociales
-    \end{highlights}
-\end{twocolentry}
+%==================================================
+% PROFILE
+%==================================================
 
-\vspace{0.3 cm}
+\section{Perfil Profesional}
 
-\begin{twocolentry}{
+Desarrollador de software autodidacta con más de ocho años de experiencia en
+desarrollo web y aplicaciones Android. Actualmente dirijo el área de informática
+de CONSAEFA, donde me dedico a automatizar los procesos internos, administrar la
+infraestructura tecnológica de la empresa y desarrollar software.
 
-        01/2022 - 06/2024
-    }
-    \textbf{Freelancer} - Programador Web
-    \begin{highlights}
-        \item Desarrollo de páginas web WordPress
-        \item Programación de dispositivos IoT
-        \item Edición de contenido audiovisual
-        \item Redacción de textos para publicaciones
-    \end{highlights}
-\end{twocolentry}
+%==================================================
+% EXPERIENCE
+%==================================================
 
-\vspace{0.3 cm}
+\section{Experiencia Profesional}
 
-\begin{twocolentry}{
+\entry{CONSAEFA S.C.}{Junio 2024 -- Actualidad}
 
-        09/2018 - 12/2021
-    }
-    \hrefWithoutArrow{https://play.google.com/store/apps/developer?id=BudaCat}{\textbf{\color{black}BudaCat}} - Desarrollador de apps
-    \begin{highlights}
-        \item Desarrollo de aplicaciones Android
-        \item Diseño de interfaz y experiencia de usuario
-        \item Creación de logotipos y gráficos
-        \item Manejo de campañas publicitarias en Google Ads
-    \end{highlights}
-\end{twocolentry}
+\position{Responsable de Informática}
 
-\vspace{0.3 cm}
+\begin{itemize}
+    \item Construí un sistema de inventario con altas, bajas y consultas, primero en VBA y migrado después a aplicación de Android y de escritorio.
+    \item Desarrollé aplicaciones de registro en campo que entregan los datos ya consolidados y listos para su análisis, sin transcripción posterior.
+    \item Mejoré el análisis SIG con una librería de Python propia y, sobre ella, el proceso completo de clasificación de superficies de predios, de las curvas de nivel a la capa final.
+    \item Automaticé el cálculo y los reportes de gastos semanales, antes hechos a mano.
+    \item Mantengo la presencia digital de la empresa, que abarca la intranet en SharePoint, el sitio web corporativo y las redes sociales.
+    \item Doy soporte técnico a los equipos de cómputo y al equipo de oficina.
+\end{itemize}
 
-\begin{twocolentry}{
+\entry{Desarrollador Web Freelance}{Enero 2022 -- Junio 2024}
 
-        08/2014 - 04/2016
-    }
-    \textbf{Comex} - Encargado de tienda
-    \begin{highlights}
-        \item Atención al cliente y venta de productos
-        \item Administración de inventarios
-        \item Control de caja y registro de ventas
-        \item Facturación electrónica
-    \end{highlights}
-\end{twocolentry}
+\position{Desarrollo Web y Sistemas Embebidos}
 
-\vspace{0.5 cm}
+\begin{itemize}
+    \item Construí sitios web para negocios locales con WordPress y tecnologías web modernas, desde el diseño hasta la publicación y el mantenimiento.
+    \item Desarrollé aplicaciones web a medida con JavaScript según los requerimientos de cada cliente.
+    \item Fabriqué dispositivos de propósito específico con Arduino y Raspberry Pi Pico.
+    \item Produje y edité contenido gráfico y audiovisual para clientes.
+\end{itemize}
+
+\entry{BudaCat}{Septiembre 2018 -- Diciembre 2021}
+
+\position{Desarrollador de Aplicaciones Android}
+
+\begin{itemize}
+    \item Desarrollé y publiqué aplicaciones Android que suman más de 4 millones de descargas y una calificación promedio de 4.5 estrellas.
+    \item Diseñé la interfaz, la identidad visual y los recursos gráficos de los productos, y gestioné sus campañas de adquisición en Google Ads.
+\end{itemize}
+
+\entry{Comex}{Agosto 2014 -- Abril 2016}
+
+\position{Encargado de Tienda}
+
+\begin{itemize}
+    \item Administré la operación diaria de la sucursal, desde la atención a clientes hasta el inventario, la caja y la facturación electrónica.
+\end{itemize}
+
+%==================================================
+% PROJECTS
+%==================================================
+
+\section{Proyectos}
+
+\entry{cfasig}{\href{https://pypi.org/project/cfasig/}{pypi.org/project/cfasig}}
+
+Librería de Python sobre GeoPandas, Shapely y Rasterio que lleva el análisis SIG
+de las ventanas de diálogo de ArcGIS a scripts reproducibles, con equivalencia
+directa a las operaciones de ArcToolbox.
+
+\entry{Depurador de Cámara Trampa}{\href{https://github.com/antruc/depuradordecamaratrampa}{github.com/antruc/depuradordecamaratrampa}}
+
+Aplicación de escritorio que revisa lotes de imágenes de cámaras trampa y
+conserva solo aquellas donde aparece fauna, con Ultralytics YOLO sobre ONNX
+Runtime. Procesamiento en flujo para lotes grandes sin cargar todo en memoria.
+Python, Toga y Briefcase; empaquetada para Linux y Windows.
+
+\entry{Bongo Cat}{\href{https://github.com/antruc/bongo-cat}{github.com/antruc/bongo-cat}}
+
+Instrumento musical táctil para Android, publicado en 2018 y en mantenimiento
+activo desde entonces: más de un millón de descargas, 10\,000 reseñas y 4.1
+estrellas en Google Play. Dieciocho instrumentos con carga y reproducción de
+audio de baja latencia sobre Web Audio, para que el sonido responda al toque sin
+retraso perceptible. Aplicación web empaquetada con Cordova y compilada con
+esbuild; migración a Capacitor en curso.
+
+\entry{tumba}{\href{https://www.npmjs.com/package/tumba}{npmjs.com/package/tumba}}
+
+Herramienta de línea de comandos para cifrar y descifrar archivos con AES-GCM
+256 y claves derivadas mediante PBKDF2. Publicada en npm.
+
+\entry{picopass}{\href{https://github.com/antruc/picopass}{github.com/antruc/picopass}}
+
+Dispositivo USB HID sobre Raspberry Pi Pico (RP2040) que escribe una cadena
+almacenada al conectarse. Firmware en CircuitPython.
+
+%==================================================
+% SKILLS
+%==================================================
 
 \section{Conocimientos}
 
-\vspace{0.2 cm}
+% style=unboxed keeps the label inline and lets long lists wrap back to the left
+% margin instead of hanging under the label.
+\begin{description}[leftmargin=0pt, labelsep=0.5em, itemsep=4pt, topsep=0pt,
+                    parsep=0pt, style=unboxed]
 
-\begin{onecolentry}
-    \textbf{Idiomas:} Español, Ingles
-\end{onecolentry}
+    \item[Lenguajes:] Python, TypeScript, JavaScript, HTML, CSS, Bash, VBA
 
-\vspace{0.2 cm}
+    \item[Frameworks:] React, Vue.js, Svelte, Node.js, Capacitor, Toga y
+    Briefcase
 
-\begin{onecolentry}
-    \textbf{Languajes:} HTML/CSS, JavaScript, TypeScript, Python, Bash, VBA
-\end{onecolentry}
+    \item[Sistemas operativos:] GNU/Linux, Windows, macOS
 
-\vspace{0.2 cm}
+    \item[Herramientas:] Git, Visual Studio Code, Android Studio, Arduino,
+    Raspberry Pi Pico
 
-\begin{onecolentry}
-    \textbf{Frameworks:} React, Vue.js, Svelte, Apache Cordova, CapacitorJS, Toga/Briefcase
-\end{onecolentry}
+    \item[IA:] Ultralytics YOLO, ONNX Runtime, llama.cpp
 
-\vspace{0.2 cm}
+    \item[Diseño y edición:] GIMP, Inkscape, Kdenlive, Audacity, Canva
 
-\begin{onecolentry}
-    \textbf{Desarrollo:} Git, Node.js, VS Code, Android Studio, Raspberry Pi Pico, Arduino
-\end{onecolentry}
+    \item[Administración de TI:] Microsoft 365, SharePoint
 
-\vspace{0.2 cm}
+    \item[SIG:] ArcGIS, QGIS
 
-\begin{onecolentry}
-    \textbf{Edición:} GIMP, Inkscape, Audacity, Kdenlive, Canva
-\end{onecolentry}
+    \item[Idiomas:] Español (nativo), Inglés (avanzado)
 
-\vspace{0.2 cm}
-
-\begin{onecolentry}
-    \textbf{Ofimática:} Microsoft Office, LibreOffice
-\end{onecolentry}
-
-\vspace{0.2 cm}
-
-\begin{onecolentry}
-    \textbf{OS:} GNU/Linux, Windows, macOS
-\end{onecolentry}
+\end{description}
 
 \end{document}

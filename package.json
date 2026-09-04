@@ -4,8 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "prettier": "bunx prettier src tests --check",
-    "lint": "bunx eslint src tests",
+    "prettier": "bunx prettier src tests *.config.js --check",
+    "lint": "bunx eslint src tests *.config.js",
     "format": "bun run lint -- --fix && bun run prettier -- --write",
     "dev": "vite",
     "build": "vite build",
